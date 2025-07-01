@@ -120,7 +120,15 @@ require("lazy").setup({
     config = function ()
       require('telescope').setup({})
     end
-  }
+  },
+  -- Keybinding hint pop-up
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("which-key").setup({})
+    end
+  },
 })
 
 -- Apply the Tokyo Night colorscheme
