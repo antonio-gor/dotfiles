@@ -87,8 +87,7 @@ require("lazy").setup({
     end,
   },
 
-  -- ### FINAL TOUCHES ###
-  -- Beautiful status line
+  -- Status line
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -99,8 +98,8 @@ require("lazy").setup({
             },
             sections = {
                 lualine_a = {'mode'},
-                lualine_b = {'branch', 'diff'},
-                lualine_c = {'filename'},
+                lualine_b = {'filename'},
+                lualine_c = {'filesize'},
                 lualine_x = {'diagnostics', 'filetype'},
                 lualine_y = {'progress'},
                 lualine_z = {'location'}
