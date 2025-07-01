@@ -13,6 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.g.mapleader = " "
 
 -- Define and configure plugins
 require("lazy").setup({
@@ -59,15 +60,6 @@ require("lazy").setup({
     version = "*",
     config = function()
       require("nvim-tree").setup({})
-    end,
-  },
-
-  -- Tab-like buffer line
-  {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    config = function()
-      require("bufferline").setup({})
     end,
   },
 
@@ -120,6 +112,15 @@ require("lazy").setup({
     main = "ibl",
     opts = {}
   },
+  -- Fuzzy finder for files, buffers, and more
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function ()
+      require('telescope').setup({})
+    end
+  }
 })
 
 -- Apply the Tokyo Night colorscheme
@@ -144,9 +145,9 @@ vim.keymap.set("n", "<C-j>", ":TmuxNavigateDown<CR>", { silent = true })
 vim.keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>", { silent = true })
 vim.keymap.set("n", "<C-l>", ":TmuxNavigateRight<CR>", { silent = true })
 vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true, desc = "Toggle file explorer" })
-vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true, desc = "Next tab" })
-vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true, desc = "Previous tab" })
-vim.keymap.set("n", "<C-w>", ":bdelete<CR>", { silent = true, desc = "Close tab" })
+vim.keymap.set('n', '<leader>b', function() require('telescope.builtin').buffers() end, { desc = 'Find open buffers' })
+vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end, { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, { desc = 'Live grep' })
 
 -- Key mapping to compile and run C++
 vim.keymap.set("n", "<F9>", function()
