@@ -76,7 +76,7 @@ Your setup is now complete\!
 
 | Key             | Action                      |
 | --------------- | --------------------------- |
-| `prefix + |`    | Split pane vertically.      |
+| `prefix + \|`    | Split pane vertically.      |
 | `prefix + -`    | Split pane horizontally.    |
 | `prefix + r`    | Reload the tmux config.     |
 | `prefix + m`    | Zoom the current pane.      |
@@ -94,6 +94,4 @@ Your setup is now complete\!
 | `gc`               | Toggle comments for a line or selection. |
 
 -----
-
-## Configuration Files
 
